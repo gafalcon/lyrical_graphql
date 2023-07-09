@@ -1,0 +1,29 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Song {
+  id: ID!
+  title: String
+  lyrics: [Lyric!]!
+}
+
+type Lyric {
+  id: ID!
+  likes: Int
+  content: String
+  song: Song!
+}
+
+type Query {
+  songs: [Song!]!
+  song(id: String!): Song
+  lyric(id: String!): Lyric
+}
+
+type Mutation {
+  addSong(title: String!): Song!
+  addLyricToSong(songId: String!, content: String!): Song
+  likeLyric(id: String!): Lyric
+  deleteSong(id: String!): Song
+}
